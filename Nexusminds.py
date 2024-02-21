@@ -54,7 +54,7 @@ def play_round():
     player_choice = request.form["choice"]
     game_state, round_num, player_payoff, bot_payoff = update_game_state(player_choice)
 
-    return render_template("prisoners_dilemma.html", 
+    return render_template("index.html", 
                            round_num=round_num, 
                            player_choice=player_choice, 
                            bot_choice=game_state['bot_choice'],  # Corrected this line
