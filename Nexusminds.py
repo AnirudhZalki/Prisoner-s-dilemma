@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, session
 import random
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key"  # Replace with a secure secret key
+app.secret_key = "os.urandom(24)" 
 
 def prisoner_dilemma_round(player_decision, bot_decision):
     if player_decision == 'Cooperate' and bot_decision == 'Cooperate':
