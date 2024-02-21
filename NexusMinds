@@ -89,4 +89,8 @@ if __name__ == "__main__":
   <p>Your choice: {{ player_choice }}</p>
   <p>Bot's choice: {{ bot_choice }}</p>
   <p>Your payoff: {{ player_payoff }}</p>
-  <p>Bot's payoff: {{ bot_payoff
+  <p>Bot's payoff: {{ bot_payoff }}</p>
+</body>
+</html
+
+  
