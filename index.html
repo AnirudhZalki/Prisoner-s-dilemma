@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prisoner's Dilemma</title>
   <style>
-    <link rel="stylesheet" href="style.css">
+    /* Add your styling here if needed */
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
@@ -31,6 +31,15 @@
       font-size: 16px;
       cursor: pointer;
     }
+
+    .leaderboard {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .round-info {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -40,25 +49,34 @@
 
   <p>Choose your strategy:</p>
 
- 
+  <!-- Form to submit player's choice -->
   <form method="post" action="/play">
     <div class="button-container">
-    <button id="cooperate-btn">Cooperate</button>
-  <form method="post" action="/play">
-    <button id="betray-btn">Betray</button>
-    <div class="button-container">
-  </div>
+      <button type="submit" name="choice" value="Cooperate">Cooperate</button>
+      <button type="submit" name="choice" value="Betray">Betray</button>
+    </div>
   </form>
 
   <p id="result"></p>
 
   <!-- Display game results -->
-  <p>Round: {{ round_num }}</p>
-  <p>Your choice: {{ player_choice }}</p>
-  <p>Bot's choice: {{ bot_choice }}</p>
-  <p>Your payoff: {{ player_payoff }}</p>
-  <p>Bot's payoff: {{ bot_payoff }}</p>
+  <div class="round-info">
+    <p>Round: {{ round_num }}</p>
+    <p>Your choice: {{ player_choice }}</p>
+    <p>Bot's choice: {{ bot_choice }}</p>
+    <p>Your payoff: {{ player_payoff }}</p>
+    <p>Bot's payoff: {{ bot_payoff }}</p>
+  </div>
+
+  <!-- Display leaderboard -->
+  <div class="leaderboard">
+    <h2>Leaderboard</h2>
+    <p>Player Points: {{ player_points }}</p>
+    <p>Bot Points: {{ bot_points }}</p>
+    <p>Highest Score: {{ highest_score }}</p>
+  </div>
 </div>
 
 </body>
 </html>
+
