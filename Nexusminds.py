@@ -54,13 +54,15 @@ def play_round():
     player_choice = request.form["choice"]
     game_state, round_num, player_payoff, bot_payoff = update_game_state(player_choice)
 
-    return render_template("index.html", 
+   return render_template("index.html", 
                            round_num=round_num, 
                            player_choice=player_choice, 
-                           bot_choice=game_state['bot_choice'],  # Corrected this line
+                           bot_choice=game_state['bot_choice'],
                            player_payoff=player_payoff, 
                            bot_payoff=bot_payoff, 
-                           **game_state)
+                           player_points=game_state['player_points'],
+                           bot_points=game_state['bot_points'],
+                           highest_score=game_state['highest_score'])
 
 if __name__ == "__main__":
     app.run(debug=True)
