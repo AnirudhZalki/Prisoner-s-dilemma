@@ -15,12 +15,12 @@
 
     const cooperateButton = document.getElementById('cooperate-button');
     cooperateButton.addEventListener('click', () => {
-      playRound('C');
+      playRound('Cooperate');
     });
 
     const betrayButton = document.getElementById('betray-button');
     betrayButton.addEventListener('click', () => {
-      playRound('B');
+      playRound('Betray');
     });
 
     const stopButton = document.getElementById('stop-button');
@@ -36,13 +36,13 @@
       roundNumber++;
 
       // Simulate the other player's choice randomly.
-      const player2Choice = Math.random() < 0.5 ? 'C' : 'B';
+      const player2Choice = Math.random() < 0.6 ? 'Cooperate' : 'Bot';
 
       // Calculate the outcomes for each player.
       let player1Outcome;
       let player2Outcome;
-      if (player1Choice === 'C') {
-        if (player2Choice === 'C') {
+      if (player1Choice === 'Cooperate') {
+        if (player2Choice === 'Cooperate') {
           player1Outcome = 3;
           player2Outcome = 3;
         } else {
@@ -50,7 +50,7 @@
           player2Outcome = 5;
         }
       } else {
-        if (player2Choice === 'C') {
+        if (player2Choice === 'Cooperate') {
           player1Outcome = 5;
           player2Outcome = 0;
         } else {
@@ -80,20 +80,20 @@
     }
 
     function displayResults(player1Choice, player2Choice, player1Outcome, player2Outcome) {
-      const resultText = `Round ${roundNumber}: Player 1 chose ${player1Choice}, Player 2 chose ${player2Choice}. Payoffs - Player 1: ${player1Outcome}, Player 2: ${player2Outcome}`;
+      const resultText = `Round ${roundNumber}: You chose ${player1Choice}, Bot chose ${player2Choice}. Payoffs - You: ${player1Outcome}, Bot: ${player2Outcome}`;
       resultsDiv.innerHTML += `<p>${resultText}</p>`;
     }
 
     function displayFinalResults() {
-      const finalResultsText = `Final Scores - Player 1: ${player1Score}, Player 2: ${player2Score}`;
+      const finalResultsText = `Final Scores - You: ${player1Score}, Bot: ${player2Score}`;
       resultsDiv.innerHTML += `<p>${finalResultsText}</p>`;
 
       // Determine the winner and display congratulations message
       let winner;
       if (player1Score > player2Score) {
-        winner = 'Player 1';
+        winner = 'You';
       } else if (player2Score > player1Score) {
-        winner = 'Player 2';
+        winner = 'Bot';
       } else {
         winner = 'It\'s a tie!';
       }
