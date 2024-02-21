@@ -1,96 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prisoner's Dilemma</title>
-  <style>
-    /* Add your styling here if needed */
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<html>
+  <head>
+    <title>Prisoner's Dilemma Game</title>
+  </head>
+  <body>
+    <h1>Prisoner's Dilemma Game</h1>
+    <h2>Welcome!<h2>
+    <button id="cooperate-button">Cooperate</button>
+    <button id="betray-button">Betray</button>
+    <button id="stop-button">Stop</button>
+    <div id="results"></div>
 
-    .container {
-      text-align: center;
-    }
+    <script>
+      const resultsDiv = document.getElementById('results');
 
-    .button-container {
-      margin-top: 20px;
-    }
+      const cooperateButton = document.getElementById('cooperate-button');
+      cooperateButton.addEventListener('click', () => {
+        playRound('Cooperate');
+      });
 
-    button {
-      padding: 10px;
-      margin: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+      const betrayButton = document.getElementById('betray-button');
+      betrayButton.addEventListener('click', () => {
+        playRound('Betray');
+      });
 
-    .leaderboard {
-      margin-top: 20px;
-      text-align: left;
-    }
+      const stopButton = document.getElementById('stop-button');
+      stopButton.addEventListener('click', () => {
+        stopGame();
+      });
 
-    .round-info {
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
+      let player1Score = 0;
+      let player2Score = 0;
+      let roundNumber = 0;
 
-<div class="container">
-  <h1>Welcome to Prisoner's Dilemma</h1>
+      function playRound(player1Choice) {
+        roundNumber++;
 
-  <p>Choose your strategy:</p>
+        // Simulate the other player's choice randomly.
+        const player2Choice = Math.random() < 0.5 ? 'Cooperate' : 'Betray';
 
-  <!-- Form to submit player's choice -->
-  <form method="post" action="/play">
-    <div class="button-container">
-      <button type="submit" name="choice" value="Cooperate">Cooperate</button>
-      <button type="submit" name="choice" value="Betray">Betray</button>
-    </div>
-  </form>
+        // Calculate the outcomes for each player.
+        let player1Outcome;
+        let player2Outcome;
+        if (player1Choice === 'Cooperate') {
+          if (player2Choice === 'Cooperate') {
+            player1Outcome = 3;
+            player2Outcome = 3;
+          } else {
+            player1Outcome = 0;
+            player2Outcome = 5;
+          }
+        } else {
+          if (player2Choice === 'Cooperate') {
+            player1Outcome = 5;
+            player2Outcome = 0;
+          } else {
+            player1Outcome = 1;
+            player2Outcome = 1;
+          }
+        }
 
-  <p id="result"></p>
+        // Update the scores.
+        player1Score += player1Outcome;
+        player2Score += player2Outcome;
 
-  <!-- Display game results -->
-  <div class="round-info">
-    <p>Round: <span id="round_num"></span></p>
-    <p>Your choice: <span id="player_choice"></span></p>
-    <p>Bot's choice: <span id="bot_choice"></span></p>
-    <p>Your payoff: <span id="player_payoff"></span></p>
-    <p>Bot's payoff: <span id="bot_payoff"></span></p>
-  </div>
+        // Display the results after each round.
+        resultsDiv.innerHTML += `Round ${roundNumber}: You (${player1Choice}) - ${player1Outcome} points, Bot (${player2Choice}) - ${player2Outcome} points<br>`;
+      }
 
-  <!-- Display leaderboard -->
-  <div class="leaderboard">
-    <h2>Leaderboard</h2>
-    <p>Player Points: <span id="player_points"></span></p>
-    <p>Bot Points: <span id="bot_points"></span></p>
-    <p>Highest Score: <span id="highest_score"></span></p>
-  </div>
-</div>
+      function stopGame() {
+        // Disable the buttons
+        cooperateButton.disabled = true;
+        betrayButton.disabled = true;
+        stopButton.disabled = true;
 
-<script>
-  // Update the values with JavaScript
-  document.getElementById("round_num").innerText = round_num;
-  document.getElementById("player_choice").innerText = player_choice;
-  document.getElementById("bot_choice").innerText = game_state['bot_choice'];
-  document.getElementById("player_payoff").innerText = player_payoff;
-  document.getElementById("bot_payoff").innerText = bot_payoff;
-  document.getElementById("player_points").innerText = player_points;
-  document.getElementById("bot_points").innerText = bot_points;
-  document.getElementById("highest_score").innerText = highest_score;
-</script>
+        // Display the final results and the winner
+        displayFinalResults();
+      }
 
-</body>
+      function displayFinalResults() {
+        resultsDiv.innerHTML += `<br>Final Results:<br>Your Score: ${player1Score}<br>Bot's Score: ${player2Score}<br>`;
+
+        // Determine the winner
+        let winner;
+        if (player1Score > player2Score) {
+          winner = 'You';
+        } else if (player2Score > player1Score) {
+          winner = 'Bot';
+        } else {
+          winner = 'It\'s a tie!';
+        }
+	 resultsDiv.innerHTML += `<p>Congratulations ${winner}!</p>`;
+
+      }
+    </script>
+  </body>
 </html>
+
 
 
  
