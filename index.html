@@ -45,7 +45,7 @@
 <body>
 
 <div class="container">
-  <h1>Welcome to Prisoner's Dilemma Game!</h1>
+  <h1>Welcome to Prisoner's Dilemma</h1>
 
   <p>Choose your strategy:</p>
 
@@ -61,23 +61,37 @@
 
   <!-- Display game results -->
   <div class="round-info">
-    <p>Round: {{ round_num }}</p>
-    <p>Your choice: {{ player_choice }}</p>
-    <p>Bot's choice: {{ bot_choice }}</p>
-    <p>Your payoff: {{ player_payoff }}</p>
-    <p>Bot's payoff: {{ bot_payoff }}</p>
+    <p>Round: <span id="round_num"></span></p>
+    <p>Your choice: <span id="player_choice"></span></p>
+    <p>Bot's choice: <span id="bot_choice"></span></p>
+    <p>Your payoff: <span id="player_payoff"></span></p>
+    <p>Bot's payoff: <span id="bot_payoff"></span></p>
   </div>
 
   <!-- Display leaderboard -->
   <div class="leaderboard">
     <h2>Leaderboard</h2>
-    <p>Player Points: {{ player_points }}</p>
-    <p>Bot Points: {{ bot_points }}</p>
-    <p>Highest Score: {{ highest_score }}</p>
+    <p>Player Points: <span id="player_points"></span></p>
+    <p>Bot Points: <span id="bot_points"></span></p>
+    <p>Highest Score: <span id="highest_score"></span></p>
   </div>
 </div>
+
+<script>
+  // Update the values with JavaScript
+  document.getElementById("round_num").innerText = round_num;
+  document.getElementById("player_choice").innerText = player_choice;
+  document.getElementById("bot_choice").innerText = game_state['bot_choice'];
+  document.getElementById("player_payoff").innerText = player_payoff;
+  document.getElementById("bot_payoff").innerText = bot_payoff;
+  document.getElementById("player_points").innerText = player_points;
+  document.getElementById("bot_points").innerText = bot_points;
+  document.getElementById("highest_score").innerText = highest_score;
+</script>
 
 </body>
 </html>
 
 
+ 
+   
