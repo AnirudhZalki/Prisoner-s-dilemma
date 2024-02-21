@@ -1,36 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prisoner's Dilemma</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="container">
-  <h1>Prisoner's Dilemma</h1>
-
-  <p>Choose your strategy:</p>
-
-  <div class="button-container">
-    <button id="cooperate-btn">Cooperate</button>
-    <button id="betray-btn">Betray</button>
-  </div>
-
-  <p id="result"></p>
-
-  <p>Round: {{ round_num }}</p>
-  <p>Your choice: {{ player_choice }}</p>
-  <p>Bot's choice: {{ bot_choice }}</p>
-  <p>Your payoff: {{ player_payoff }}</p>
-  <p>Bot's payoff: {{ bot_payoff }}</p>
-</div>
-
-</body>
-</html>
-
-  
 from flask import Flask, render_template, request, session
 import random
 
