@@ -47,7 +47,7 @@ def update_game_state(player_choice):
 
 @app.route("/")
 def index():
-    return render_template("prisoners_dilemma.html")
+    return render_template("index.html")
 
 @app.route("/play", methods=["POST"])
 def play_round():
