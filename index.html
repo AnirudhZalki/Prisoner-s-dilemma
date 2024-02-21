@@ -4,7 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prisoner's Dilemma</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    <link rel="stylesheet" href="style.css">
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
@@ -13,13 +40,19 @@
 
   <p>Choose your strategy:</p>
 
-  <div class="button-container">
+ 
+  <form method="post" action="/play">
+    <div class="button-container">
     <button id="cooperate-btn">Cooperate</button>
+  <form method="post" action="/play">
     <button id="betray-btn">Betray</button>
+    <div class="button-container">
   </div>
+  </form>
 
   <p id="result"></p>
 
+  <!-- Display game results -->
   <p>Round: {{ round_num }}</p>
   <p>Your choice: {{ player_choice }}</p>
   <p>Bot's choice: {{ bot_choice }}</p>
